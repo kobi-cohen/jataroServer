@@ -18,7 +18,7 @@ console.log('Server Started !')
 const insert = async(tableName,{item,phone,time})=>{
     try{
 
-        client.connect()
+        await client.connect()
         console.log('connected ')
         const i = await client.query(`
         insert into ${tableName}
@@ -26,15 +26,16 @@ const insert = async(tableName,{item,phone,time})=>{
         values('${item}','${phone}','${time}')
         `)
         
-        client.end(()=>console.log('disconnected'))
     
-
+        
+        
     }
     catch(e){
         console.log(e+' in the insert function !!!')
     }
     finally{
-        client.end(()=>console.log('disconnected'))
+        
+        await client.end(()=>console.log('disconnected'))
     }
 
 }
