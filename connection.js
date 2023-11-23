@@ -9,9 +9,9 @@
 // password : admin
 
 
-const {Client} = require('pg')
+const {Pool} = require('pg')
  
-const client = new Client({
+const client = new Pool({
   host: 'dpg-ckt6h68168ec73f0548g-a.oregon-postgres.render.com',
   port: 5432,
   database: 'luna_075k',
