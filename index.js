@@ -30,6 +30,7 @@ const insert = async(tableName,{item,phone,time})=>{
 
     }
     catch(e){
+        client.release()
         console.log(e+' in the insert function !!!')
     }
     finally{
