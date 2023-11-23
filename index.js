@@ -26,7 +26,7 @@ const insert = async(tableName,{item,phone,time})=>{
         values('${item}','${phone}','${time}')
         `)
         
-        client.release()
+    
 
     }
     catch(e){
