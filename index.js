@@ -26,12 +26,15 @@ const insert = async(tableName,{item,phone,time})=>{
         values('${item}','${phone}','${time}')
         `)
         
-        client.end(()=>console.log('disconnected'))
+       
     }
     catch(e){
         console.log(e+' in the insert function !!!')
     }
-    
+    finally{
+        client.end(()=>console.log('disconnected'))
+    }
+
 }
 
 
