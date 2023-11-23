@@ -2,7 +2,7 @@ const pg = require('pg')
 const cors = require('cors')
 const express = require('express')
 const app = express()
-
+const port = process.env.PORT || 3000;
 const {client} = require('./connection')
 
 app.use(cors())
@@ -44,4 +44,4 @@ res.send('great !')
 })
 
 
-app.listen(3000)
+app.listen(port)
