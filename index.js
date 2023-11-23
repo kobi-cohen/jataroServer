@@ -3,18 +3,19 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
-const {client} = require('./connection')
+const {pool} = require('./connection')
 
 app.use(cors())
 app.use(express.json())
 
 console.log('Server Started !')
+
 const insert = async(tableName,{item,phone,time})=>{
     try{
 
-        await client.connect(()=>console.log('connected now !'))
+        await pool.connect(()=>console.log('connected now !'))
        
-        await client.query(`
+        await pool.query(`
         insert into ${tableName}
         (item,phone,date)
         values('${item}','${phone}','${time}')
@@ -29,7 +30,7 @@ const insert = async(tableName,{item,phone,time})=>{
     }
     finally{
         
-        await client.end(()=>console.log('disconnected'))
+        await pool.end(()=>console.log('disconnected'))
     }
 
 }
