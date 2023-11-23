@@ -16,15 +16,22 @@ app.use(express.json())
 // }
 console.log('Server Started !')
 const insert = async(tableName,{item,phone,time})=>{
-    client.connect()
-    console.log('connected ')
-    const i = await client.query(`
-    insert into ${tableName}
-    (item,phone,date)
-    values('${item}','${phone}','${time}')
-    `)
+    try{
 
-    client.end(()=>console.log('disconnected'))
+        client.connect()
+        console.log('connected ')
+        const i = await client.query(`
+        insert into ${tableName}
+        (item,phone,date)
+        values('${item}','${phone}','${time}')
+        `)
+        
+        client.end(()=>console.log('disconnected'))
+    }
+    catch(e){
+        console.log(e+' in the insert function !!!')
+    }
+    
 }
 
 
