@@ -23,7 +23,7 @@ const insert = async(tableName,{item,phone,time})=>{
           
           })
           
-        await cleint.connect(()=>console.log('connected via object  !'))
+        await client.connect(()=>console.log('connected via object  !'))
        
         await client.query(`
         insert into ${tableName}
