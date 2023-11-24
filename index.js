@@ -3,7 +3,7 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
-const {pool} = require('./connection')
+// const {pool} = require('./connection')
 
 app.use(cors())
 app.use(express.json())
@@ -12,10 +12,20 @@ console.log('Server Started !')
 
 const insert = async(tableName,{item,phone,time})=>{
     try{
-
-        await pool.connect(()=>console.log('connected now !'))
+        const client = new pg.Client ({
+            host: 'dpg-ckt6h68168ec73f0548g-a.oregon-postgres.render.com',
+            port: 5432,
+            database: 'luna_075k',
+            user: 'root',
+            password: 'Z2I5gGNsmzhiU24hZTSr3Uokr0hN1Hil',
+            ssl:true,
+           
+          
+          })
+          
+        await cleint.connect(()=>console.log('connected via object  !'))
        
-        await pool.query(`
+        await client.query(`
         insert into ${tableName}
         (item,phone,date)
         values('${item}','${phone}','${time}')
@@ -30,7 +40,7 @@ const insert = async(tableName,{item,phone,time})=>{
     }
     finally{
         
-        await pool.end(()=>console.log('disconnected'))
+        await client.end(()=>console.log('disconnected via client'))
     }
 
 }
