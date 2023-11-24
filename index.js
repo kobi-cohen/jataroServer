@@ -40,7 +40,7 @@ const insert = async(tableName,{item,phone,time})=>{
     }
     finally{
         
-        await client.end(()=>console.log('disconnected via client'))
+         client.end(()=>console.log('disconnected via client'))
     }
 
 }
