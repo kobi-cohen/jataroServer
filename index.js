@@ -52,12 +52,12 @@ app.get('/res',(req,res)=>{
     res.json({name:Math.floor(Math.random()*1_000_000)+1})
 })
 
-app.post('/req',async(req,res)=>{
+app.post('/req',(req,res)=>{
     console.log(req.body)
     console.log('request was fired !')
     const date = new Date().toString()
 
-await insert('items',{item:req.body.item,phone:req.body.phone,time:date})
+insert('items',{item:req.body.item,phone:req.body.phone,time:date})
 res.send('great !')
 })
 
